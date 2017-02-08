@@ -7,7 +7,7 @@ setup(
   author = 'Simon-Pierre Gingras',
   author_email = 'spgingras@poka.io',
   url = 'https://github.com/PokaInc/cfn-get-export-value', # use the URL to the github repo
-  download_url = 'https://github.com/PokaInc/cfn-get-export-value/tarball/0.0.1', # I'll explain this in a second
+  download_url = 'https://github.com/PokaInc/cfn-get-export-value/tarball/0.0.1',
   keywords = ['aws', 'cloudformation', 'exports'], # arbitrary keywords
   classifiers = [],
 )
