@@ -1,6 +1,8 @@
 # cfn-get-export-value
 Retrieve a AWS CloudFormation exported value by its name
 
+[![Build Status](https://travis-ci.org/PokaInc/cfn-get-export-value.svg?branch=master)](https://travis-ci.org/PokaInc/cfn-get-export-value)
+
 ## Motivation
 AWS exposes [an API to list CloudFormation exports](http://boto3.readthedocs.io/en/latest/reference/services/cloudformation.html#CloudFormation.Client.list_exports). However, retrieving the value of a particular export requires that you iterate over all the exports. This module aims to make this process easier.
 
