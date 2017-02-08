@@ -1,3 +1,6 @@
+import boto3
+
+
 def get_export_value(name):
     def _get_export_value(name, next_token):
         resp = _list_exports(next_token=next_token)
