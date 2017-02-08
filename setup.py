@@ -10,5 +10,8 @@ setup(
     url='https://github.com/PokaInc/cfn-get-export-value',  # use the URL to the github repo
     download_url='https://github.com/PokaInc/cfn-get-export-value/tarball/0.0.1',
     keywords=['aws', 'cloudformation', 'exports'],  # arbitrary keywords
+    install_requires=[
+        'boto3',
+    ],
     classifiers=[],
 )
