@@ -5,7 +5,7 @@ from cfn_get_export_value.cfn_get_export_value import ExportNotFoundError
 
 
 def test__get_export_value__value_exists_in_first_page(mocker):
-    def fake_list_exports(next_token=None):
+    def fake_list_exports(next_token=None, session=None):
         if not next_token:
             return {
                 u'Exports': [
@@ -58,7 +58,7 @@ def test__get_export_value__value_exists_in_first_page(mocker):
 
 
 def test__get_export_value__value_exists_in_another_page(mocker):
-    def fake_list_exports(next_token=None):
+    def fake_list_exports(next_token=None, session=None):
         if not next_token:
             return {
                 u'Exports': [
@@ -106,7 +106,7 @@ def test__get_export_value__value_exists_in_another_page(mocker):
 
 
 def test__get_export_value__name_does_not_exist(mocker):
-    def fake_list_exports(next_token=None):
+    def fake_list_exports(next_token=None, session=None):
         if not next_token:
             return {
                 u'Exports': [
