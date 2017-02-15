@@ -19,3 +19,9 @@ from cfn_get_export_value import get_export_value
 value = get_export_value('some-name')
 # value: "some-value"
 ```
+
+You can also specify a boto3 session argument:
+
+```python
+get_export_value('some-name', session=some_session)
+```

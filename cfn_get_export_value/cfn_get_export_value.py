@@ -1,9 +1,9 @@
 import boto3
 
 
-def get_export_value(name):
+def get_export_value(name, session=None):
     def _get_export_value(name, next_token):
-        resp = _list_exports(next_token=next_token)
+        resp = _list_exports(next_token=next_token, session=session)
 
         exports = resp['Exports']
         export = next((export for export in exports if export['Name'] == name), None)
@@ -21,11 +21,14 @@ def get_export_value(name):
     return _get_export_value(name, next_token=None)
 
 
-def _list_exports(next_token=None):
+def _list_exports(next_token=None, session=None):
     """
     Cloudformation facade, for easier mocking during unit testing
     """
-    cf = boto3.client('cloudformation')
+    if session:
+        cf = session.client('cloudformation')
+    else:
+        cf = boto3.client('cloudformation')
     if next_token:
         return cf.list_exports(NextToken=next_token)
     else:
