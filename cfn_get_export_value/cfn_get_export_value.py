@@ -1,9 +1,9 @@
 import boto3
 
 
-def get_export_value(name, session=None):
+def get_export_value(name, client=None, session=None):
     def _get_export_value(name, next_token):
-        resp = _list_exports(next_token=next_token, session=session)
+        resp = _list_exports(next_token=next_token, client=client, session=session)
 
         exports = resp['Exports']
         export = next((export for export in exports if export['Name'] == name), None)
@@ -21,14 +21,20 @@ def get_export_value(name, session=None):
     return _get_export_value(name, next_token=None)
 
 
-def _list_exports(next_token=None, session=None):
+def _list_exports(next_token=None, client=None, session=None):
     """
     Cloudformation facade, for easier mocking during unit testing
     """
+    if client and session:
+        raise ValueError('Cannot specify both client and session')
+
     if session:
         cf = session.client('cloudformation')
+    elif client:
+        cf = client
     else:
         cf = boto3.client('cloudformation')
+
     if next_token:
         return cf.list_exports(NextToken=next_token)
     else:
