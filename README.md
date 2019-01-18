@@ -26,6 +26,11 @@ You can also specify a boto3 session argument:
 get_export_value('some-name', session=some_session)
 ```
 
+or you can specify a client:
+```python
+get_export_value('some-name', client=some_client)
+```
+
 ## IAM Permission
 
 The only policy action required to use _cfn-get-export-value_ is `cloudformation:ListExports`. However there's a caveat, you cannot target a particular stack as resource, you must use a wildcard (`*`).
